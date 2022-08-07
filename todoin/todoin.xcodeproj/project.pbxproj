@@ -13,6 +13,7 @@
 		064DFAEC28A026CB002E732C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 064DFAEB28A026CB002E732C /* Preview Assets.xcassets */; };
 		064DFAEE28A026CB002E732C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064DFAED28A026CB002E732C /* Persistence.swift */; };
 		064DFAF128A026CB002E732C /* todoin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 064DFAEF28A026CB002E732C /* todoin.xcdatamodeld */; };
+		064DFAF828A02945002E732C /* AdditemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 064DFAF728A02945002E732C /* AdditemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		064DFAEB28A026CB002E732C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		064DFAED28A026CB002E732C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		064DFAF028A026CB002E732C /* todoin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = todoin.xcdatamodel; sourceTree = "<group>"; };
+		064DFAF728A02945002E732C /* AdditemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				064DFAE428A026CA002E732C /* todoinApp.swift */,
 				064DFAE628A026CA002E732C /* ContentView.swift */,
+				064DFAF728A02945002E732C /* AdditemView.swift */,
 				064DFAE828A026CB002E732C /* Assets.xcassets */,
 				064DFAED28A026CB002E732C /* Persistence.swift */,
 				064DFAEF28A026CB002E732C /* todoin.xcdatamodeld */,
@@ -147,6 +150,7 @@
 				064DFAEE28A026CB002E732C /* Persistence.swift in Sources */,
 				064DFAE728A026CA002E732C /* ContentView.swift in Sources */,
 				064DFAE528A026CA002E732C /* todoinApp.swift in Sources */,
+				064DFAF828A02945002E732C /* AdditemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
