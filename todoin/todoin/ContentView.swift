@@ -19,6 +19,12 @@ struct ContentView: View {
     public var items: FetchedResults<Item>
     
     @State public var addItemView = false
+    
+    var dateFormatter: DateFormatter {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .long
+            return formatter
+        }
 
     var body: some View {
         NavigationView {
@@ -67,3 +73,4 @@ struct ContentView: View {
         }
     }
 }
+

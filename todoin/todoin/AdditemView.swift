@@ -12,13 +12,23 @@ struct AdditemView: View {
     @Environment(\.dismiss) public var dismiss
     
     @State public var itemTitle = ""
+    @State private var wakeUp = Date()
     
     @FetchRequest(sortDescriptors: []) public var item: FetchedResults<Item>
+    
+    var dateFormatter: DateFormatter {
+            let formatter = DateFormatter()
+            formatter.dateStyle = .long
+            return formatter
+        }
     
     var body: some View {
         NavigationView {
             Form {
+                DatePicker("Choose Deadline", selection: $wakeUp, in: Date()...)
+                    .datePickerStyle(WheelDatePickerStyle()).labelsHidden()
                 TextField("", text: $itemTitle)
+                //Text("Date is \(wakeUp, formatter: dateFormatter)")
                 Button(action: {
                     saveItem()
                     dismiss()
@@ -33,7 +43,7 @@ struct AdditemView: View {
     public func saveItem() {
         let newItem = Item(context: viewContext)
         newItem.title = itemTitle
-        newItem.timestamp = Date()
+        newItem.timestamp = wakeUp
         do {
             try viewContext.save()
         }
