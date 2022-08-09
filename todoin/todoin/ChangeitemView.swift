@@ -1,13 +1,13 @@
 //
-//  AdditemView.swift
+//  ChangeitemView.swift
 //  todoin
 //
-//  Created by Y3SUNG on 2022/08/08.
+//  Created by Y3SUNG on 2022/08/10.
 //
 
 import SwiftUI
 
-struct AdditemView: View {
+struct ChangeitemView: View {
     @Environment(\.managedObjectContext) public var viewContext
     @Environment(\.dismiss) public var dismiss
     @State private var showWidget = false
@@ -17,7 +17,6 @@ struct AdditemView: View {
     @State private var isShowWidget = false
     
     @FetchRequest(sortDescriptors: []) public var item: FetchedResults<Item>
-    
     var body: some View {
         NavigationView {
             Form {
@@ -28,21 +27,21 @@ struct AdditemView: View {
                     Text("Show Widget")
                 }
                 Button(action: {
-                    saveItem()
+                    resaveItem()
                     dismiss()
                 }, label: {
                     Text("Save").frame(minWidth: 0, maxWidth: .infinity)
                 })
             }
-            .navigationTitle("Plus")
+            .navigationTitle("Change")
         }
     }
     
-    public func saveItem() {
-        let newItem = Item(context: viewContext)
-        newItem.title = itemTitle
-        newItem.timestamp = wakeUp
-        newItem.isImportant = showWidget
+    public func resaveItem() {
+        let reItem = Item(context: viewContext)
+        reItem.title = itemTitle
+        reItem.timestamp = wakeUp
+        reItem.isShowWidget = showWidget
         do {
             try viewContext.save()
         }
@@ -52,8 +51,8 @@ struct AdditemView: View {
     }
 }
 
-struct AdditemView_Previews: PreviewProvider {
+struct ChangeitemView_Previews: PreviewProvider {
     static var previews: some View {
-        AdditemView()
+        ChangeitemView()
     }
 }

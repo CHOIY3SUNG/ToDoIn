@@ -19,20 +19,13 @@ struct ContentView: View {
     public var items: FetchedResults<Item>
     
     @State public var addItemView = false
-    
-    
-    var dateFormatter: DateFormatter {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .short
-            return formatter
-        }
 
     var body: some View {
         NavigationView {
             List {
                 ForEach(items) { item in
                     HStack {
-                        if item.isShowWidget {
+                        if item.isImportant {
                             Image(systemName: "timer")
                                 .foregroundColor(.blue)
                         } else {
@@ -41,7 +34,12 @@ struct ContentView: View {
                         }
                         Text(item.title ?? "")
                         Spacer()
-                        Text(Date().addingTimeInterval(600), style: .relative)
+                        if item.timestamp! > Date() {
+                            Text(item.timestamp!, style: .relative)
+                        } else {
+                            Text("-\(item.timestamp!, style: .relative)")
+                                .foregroundColor(.gray)
+                        }
                     }
                 }
                 .onDelete(perform: deleteItems)
