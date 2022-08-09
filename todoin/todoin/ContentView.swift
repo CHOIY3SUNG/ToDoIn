@@ -13,12 +13,13 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) public var viewContext
     
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.title, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     
     public var items: FetchedResults<Item>
     
     @State public var addItemView = false
+    
     
     var dateFormatter: DateFormatter {
             let formatter = DateFormatter()
