@@ -23,7 +23,7 @@ struct ContentView: View {
     
     var dateFormatter: DateFormatter {
             let formatter = DateFormatter()
-            formatter.dateStyle = .long
+            formatter.dateStyle = .short
             return formatter
         }
 
@@ -32,9 +32,16 @@ struct ContentView: View {
             List {
                 ForEach(items) { item in
                     HStack {
-                        Image(systemName: "timer")
-                            .foregroundColor(.red)
+                        if item.isShowWidget {
+                            Image(systemName: "timer")
+                                .foregroundColor(.blue)
+                        } else {
+                            Image(systemName: "timer")
+                                .foregroundColor(.gray)
+                        }
                         Text(item.title ?? "")
+                        Spacer()
+                        Text(Date().addingTimeInterval(600), style: .relative)
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -73,5 +80,8 @@ struct ContentView: View {
             }
         }
     }
+    
+    private func d_dayCal() {
+        
+    }
 }
-

@@ -10,25 +10,23 @@ import SwiftUI
 struct AdditemView: View {
     @Environment(\.managedObjectContext) public var viewContext
     @Environment(\.dismiss) public var dismiss
+    @State private var showWidget = false
     
     @State public var itemTitle = ""
     @State private var wakeUp = Date()
+    @State private var isShowWidget = false
     
     @FetchRequest(sortDescriptors: []) public var item: FetchedResults<Item>
-    
-    var dateFormatter: DateFormatter {
-            let formatter = DateFormatter()
-            formatter.dateStyle = .long
-            return formatter
-        }
     
     var body: some View {
         NavigationView {
             Form {
                 DatePicker("Choose Deadline", selection: $wakeUp, in: Date()...)
                     .datePickerStyle(WheelDatePickerStyle()).labelsHidden()
-                TextField("", text: $itemTitle)
-                //Text("Date is \(wakeUp, formatter: dateFormatter)")
+                TextField("Write Todo", text: $itemTitle)
+                Toggle(isOn: $showWidget) {
+                    Text("Show Widget")
+                }
                 Button(action: {
                     saveItem()
                     dismiss()
@@ -44,6 +42,7 @@ struct AdditemView: View {
         let newItem = Item(context: viewContext)
         newItem.title = itemTitle
         newItem.timestamp = wakeUp
+        newItem.isShowWidget = showWidget
         do {
             try viewContext.save()
         }
