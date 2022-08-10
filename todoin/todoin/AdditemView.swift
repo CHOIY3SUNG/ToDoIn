@@ -25,7 +25,7 @@ struct AdditemView: View {
                     .datePickerStyle(WheelDatePickerStyle()).labelsHidden()
                 TextField("Write Todo", text: $itemTitle)
                 Toggle(isOn: $showWidget) {
-                    Text("Show Widget")
+                    Text("Important")
                 }
                 Button(action: {
                     saveItem()
